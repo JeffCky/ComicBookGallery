@@ -2,6 +2,34 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    var seriesTitle = "The Amazing Spider-Man";
+    var issueNumber = 700;
+    var description = "<p>Final issue! Witness the final hours of Doctor Octopus' life and his one, last, great act of revenge! Even if Spider-Man survives... <strong>will Peter Parker?</strong></p>";
+    var artists = new string[]
+    {
+        "Script: Dan Slott",
+        "Pencils: Humberto Ramos",
+        "Inks: Victor Olazaba",
+        "Colors: Edgar Delgado",
+        "Letters: Chris Eliopoulos"
+    };
 }
 
-<h1>Commic Books Detail Page</h1>
+
+<div class="container">
+    <h1 class="text-center">Comic Books Detail Page</h1>
+    <hr/>
+    <h3> @seriesTitle </h3>
+    <h3> Issue #@issueNumber </h3>
+    <h3>Description:</h3>
+    <div>@Html.Raw(@description)</div>
+    <h3>Artists:</h3>
+    <div>
+        @foreach(var artist in @artists)
+            {
+                <h6>@artist</h6>
+            }
+    </div>
+    
+
+ </div>
