@@ -6,4 +6,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\Images\bone-50.jpg" />
+    <Content Remove="wwwroot\Images\the-amazing-spider-man-657.jpg" />
+    <Content Remove="wwwroot\Images\the-amazing-spider-man-700.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Images\bone-50.jpg" />
+    <None Include="wwwroot\Images\the-amazing-spider-man-657.jpg" />
+    <None Include="wwwroot\Images\the-amazing-spider-man-700.jpg" />
+  </ItemGroup>
+
 </Project>
