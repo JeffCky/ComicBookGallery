@@ -1,24 +1,24 @@
-﻿@{
-   
+﻿@model ComicBook
+@{
+    ViewBag.Title = @Model.DisplayText;
 }
-
 
 <div class="container">
     <h1 class="text-center">Comic Books Detail Page</h1>
     <hr/>
-    <h3> @ViewBag.SeriesTitle </h3>
-    <h3> Issue #@ViewBag.IssueNumber </h3>
+    <h3> @Model.SeriesTitle </h3>
+    <h3> Issue #@Model.IssueNumber </h3>
     <h3>Description:</h3>
-    <div>@Html.Raw(@ViewBag.Description)</div>
+    <div>@Html.Raw(Model.DescriptionHtml)</div>
     
-    @if(@ViewBag.Artists.Length > 0)
+    @if(@Model.Artists.Length > 0)
         {
             <h3>Artists:</h3>
             <div>
                 <ul>
-                     @foreach(var artist in ViewBag.Artists)
+                     @foreach(var artist in Model.Artists)
                     {
-                        <li>@artist</li>
+                        <li>@artist.Role @artist.Name</li>
                     }
 
                 </ul>
