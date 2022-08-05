@@ -1,29 +1,31 @@
 ﻿@model ComicBook[]
 
 @{
-    ViewBag.Title = "Comic Book Gallery";
+    
 }
 
 
-    <h2 class="display-4">@ViewBag.Title</h2>
-    <p>Only the best Comic Books listed here!</p>
+<h2 class="display-4">@ViewData["Title"]</h2>
+<p>Only the best Comic Books listed here!</p>
     
 
-
-    <div class="row">
-        @foreach(var comicBook in Model)
-        {
-            <div class="col-md-4">
+<div class="row">
+    @foreach(var comicBook in Model)
+    {
+        <div class="col-md-4">
+            
                 <div class="card card-body bg-light mb-4">
-                    <h5> @comicBook.DisplayText</h5>
-                    <img src="/Images/@comicBook.CoverImageFileName"
-                        alt="@comicBook.DisplayText" class="img-fluid w-100" />
-                    <a href="/ComicBooks/Detail/@comicBook.Id" class="btn btn-info stretched-link ">See Comic Book Details</a>
+                    <a href="@Url.Action("Detail", "ComicBooks", new{ id= comicBook.Id})" class="stretched-link text-decoration-none">
+                <h5> @comicBook.DisplayText</h5>
+                <img src="/Images/@comicBook.CoverImageFileName"
+                    alt="@comicBook.DisplayText" class="img-fluid w-100" />
+                </a>
                 </div>
             
-            </div>  
-        }
-    </div>
+            
+        </div>  
+    }
+</div>
 
         
     
