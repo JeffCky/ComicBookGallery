@@ -1,4 +1,5 @@
-﻿using ComicsGallery.Models;
+﻿using ComicsGallery.Data;
+using ComicsGallery.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -8,14 +9,20 @@ namespace ComicsGallery.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+        private ComicBookRepository _comicBookRepository = null;
+        
+        
+
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            _comicBookRepository = new ComicBookRepository();
         }
 
         public IActionResult Index()
         {
-            return View();
+            var comicBooks = _comicBookRepository.GetComicBooks();
+            return View(comicBooks);
         }
 
         public IActionResult Privacy()

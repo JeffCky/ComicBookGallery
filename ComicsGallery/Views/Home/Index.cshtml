@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ComicBook[]
+
+@{
     ViewData["Title"] = "Comic Book Gallery";
 }
 
@@ -7,3 +9,41 @@
     <p>Only the best Comic Books listed here!</p>
     
 </div>
+
+@foreach(var comicBook in Model)
+{
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-body bg-light">
+                <h5><label>Series Title:</label> @comicBook.SeriesTitle</h5>
+                <h5><label>Issue #:</label> @comicBook.IssueNumber</h5>
+                <h5><label>Favorite:</label> @(comicBook.Favorite ? "Yes" : "No")</h5>
+                @if(comicBook.Artists.Length > 0)
+                {
+                    <h5>Artists:</h5>
+                    <div>
+                        <ul>
+                            @foreach(var artist in comicBook.Artists)
+                            {
+                                <li>@artist.Role @artist.Name</li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+            <h5>Description</h5>
+            @Html.Raw(comicBook.DescriptionHtml)
+        </div>
+        <div class="col-md-6">
+            <img src="/Images/@comicBook.CoverImageFileName"
+                alt="@comicBook.DisplayText" class="img-fluid w-100 mb-4" />
+                <br/>
+        </div>
+        <br/>
+        <br/>
+        <hr/>
+        <br/>
+    </div>
+}
+
+
